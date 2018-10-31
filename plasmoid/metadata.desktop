@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=CPU Bar
+Comment=Show CPU usage in a bar
+Icon=cpu
+Type=Service
+
+X-KDE-PluginInfo-Name=oskude.plasmoid.cpubar
+X-KDE-ServiceTypes=Plasma/Applet
+X-Plasma-API=declarativeappletscript
+X-Plasma-MainScript=ui/main.qml

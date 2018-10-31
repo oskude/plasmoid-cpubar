@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+      http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
+  <kcfgfile name=""/>
+  <group name="General">
+    <entry name="updateInterval" type="Int">
+        <label>The interval in milliseconds to update the data shown.</label>
+        <default>250</default>
+    </entry>
+    <entry name="barHeight" type="Int">
+        <label>The pixel height of a bar.</label>
+        <default>8</default>
+    </entry>
+    <entry name="barSpacing" type="Int">
+        <label>The pixel size of space between bars.</label>
+        <default>1</default>
+    </entry>
+  </group>
+</kcfg>
