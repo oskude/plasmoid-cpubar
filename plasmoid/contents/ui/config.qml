@@ -1,14 +1,57 @@
 import QtQuick 2.11
 import QtQuick.Controls 1.4
 import QtQuick.Layouts 1.11
+import QtQuick.Dialogs 1.0
 
 Item {
+	id: root
 	property int cfg_updateInterval
 	property int cfg_barHeight
 	property int cfg_barSpacing
-	
+	property color cfg_barColor
+	property color cfg_fadeColor
+
 	GridLayout {
 		columns: 2
+
+		// color picker for bar colors
+		HeatbarPreview {
+			Layout.columnSpan: 2
+			Layout.fillWidth: true
+			Layout.preferredHeight: 16
+			barColor: cfg_barColor
+			fadeColor: cfg_fadeColor
+			MouseArea { // left
+				anchors.left: parent.left
+				anchors.right: parent.horizontalCenter
+				height: parent.height
+				onClicked: {
+					barColorPicker.open();
+				}
+				ColorDialog {
+					id: barColorPicker
+					title: "Bar Color"
+					color: root.cfg_barColor
+					showAlphaChannel: true
+					onAccepted: root.cfg_barColor = this.color
+				}
+			}
+			MouseArea { // right
+				anchors.left: parent.horizontalCenter
+				anchors.right: parent.right
+				height: parent.height
+				onClicked: {
+					fadeColorPicker.open();
+				}
+				ColorDialog {
+					id: fadeColorPicker
+					title: "Fade Color"
+					color: root.cfg_fadeColor
+					showAlphaChannel: true
+					onAccepted: root.cfg_fadeColor = this.color
+				}
+			}
+		}
 
 		Label {
 			text: i18n("Update Interval:")

@@ -5,9 +5,12 @@ import org.kde.plasma.components 2.0 as PlasmaComponents
 import org.kde.plasma.core 2.0 as PlasmaCore
 
 Item {
-	property int updateInterval: plasmoid.configuration.updateInterval
-	property int barHeight:      plasmoid.configuration.barHeight
-	property int barSpacing:     plasmoid.configuration.barSpacing
+	id: root
+	property int    updateInterval: plasmoid.configuration.updateInterval
+	property int    barHeight:      plasmoid.configuration.barHeight
+	property int    barSpacing:     plasmoid.configuration.barSpacing
+	property string barColor:       plasmoid.configuration.barColor
+	property string fadeColor:      plasmoid.configuration.fadeColor
 
 	Plasmoid.preferredRepresentation: Plasmoid.fullRepresentation
 	Layout.maximumHeight: view.height
@@ -18,11 +21,13 @@ Item {
 		width: parent.width
 		height: contentHeight
 		model: cpuModel
-		spacing: barSpacing
+		spacing: root.barSpacing
 		delegate: Heatbar {
 			width: parent.width
-			height: barHeight
+			height: root.barHeight
 			value: model.value
+			barColor: root.barColor
+			fadeColor: root.fadeColor
 		}
 	}
 
@@ -32,7 +37,7 @@ Item {
 
 	PlasmaCore.DataSource {
 		engine: "systemmonitor"
-		interval: updateInterval
+		interval: root.updateInterval
 		onSourceAdded: {
 			let match = source.match(/^cpu\/cpu([0-9]+)\/TotalLoad/)
 			if (match) {

@@ -17,5 +17,13 @@
         <label>The pixel size of space between bars.</label>
         <default>1</default>
     </entry>
+    <entry name="barColor" type="string">
+        <label>Bar color for activity</label>
+        <default>#801e9900</default>
+    </entry>
+    <entry name="fadeColor" type="string">
+        <label>Fade color for inactivity</label>
+        <default>#26000000</default>
+    </entry>
   </group>
 </kcfg>
