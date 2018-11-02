@@ -1,12 +1,14 @@
 import QtQuick 2.11
 
+import "components"
+
 Item {
 	property alias barColor: heatbar.barColor
 	property alias fadeColor: heatbar.fadeColor
 
 	Heatbar {
-		anchors.fill: parent
 		id: heatbar
+		anchors.fill: parent
 	}
 
 	onBarColorChanged: previewDataFiller.restart();
